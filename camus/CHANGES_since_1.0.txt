@@ -1,0 +1,29 @@
+1.0.5 - ???
+-----
+ - [camus_mcs] Enable core-guidance by default.  It is much faster than not
+   using cores, which was the default in previous versions.  The -u flag now
+   DISABLES core-guidance, and it is not recommended for general use.
+ - [camus_mcs] Fixed a bug (nearly impossible to trigger) in core extraction.
+ - [camus_mcs] Doesn't die when hitting a blank line now.
+ - Added simple tests
+ - Minor updates to packaging, scripts, documentation, etc.
+
+1.0.4 - 2011/05/12
+-----
+ - [camus_mus] Improved hash function for better performance on some instances.
+
+1.0.3 - 2011/04/07
+-----
+ - Improved run_camus.sh script
+   - More error checking, reporting
+   - POSIX compatible (primarily for dash under *ubuntu)
+
+1.0.2 - 2010/06/14
+-----
+ - [camus_mus] Improved code comments
+
+1.0.1 - 2009/09/04
+-----
+ - [camus_mcs] Added ability to read existing MCSes from a file
+ - [camus_mcs] Minor code reorganization
+

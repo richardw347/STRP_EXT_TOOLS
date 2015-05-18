@@ -1,0 +1,28 @@
+../mcs/camus_mcs in/test_badline.cnf,out/test_badline.cnf.MCSes
+../mcs/camus_mcs in/grouptest.cnf,out/grouptest.cnf.MCSes
+../mcs/camus_mcs -g in/grouptest.cnf.grp in/grouptest.cnf,out/grouptest.cnf.groupMCSes
+../mcs/camus_mcs in/test1.cnf,out/test1.cnf.MCSes
+../mcs/camus_mcs in/test2.cnf,out/test2.cnf.MCSes
+../mcs/camus_mcs in/test3.cnf,out/test3.cnf.MCSes
+../mcs/camus_mcs in/test4.cnf,out/test4.cnf.MCSes
+../mcs/camus_mcs in/test5.cnf,out/test5.cnf.MCSes
+../mcs/camus_mcs in/test6.cnf,out/test6.cnf.MCSes
+../mcs/camus_mcs in/test7.cnf,out/test7.cnf.MCSes
+../mcs/camus_mcs in/c14.cnf,out/c14.cnf.MCSes
+../mcs/camus_mcs in/c19.cnf,out/c19.cnf.MCSes
+../mcs/camus_mcs -u in/c19.cnf,out/c19.cnf.MCSes
+../mcs/camus_mcs -x12 in/c14.cnf,out/c14.cnf.MCSes
+../mcs/camus_mcs -ux12 in/c14.cnf,out/c14.cnf.MCSes
+../mcs/camus_mcs -u in/c14.cnf,out/c14.cnf.MCSes
+../mcs/camus_mcs -u in/c14.cnf,out/c14.cnf.MCSes
+../mcs/camus_mcs -x5 in/c19.cnf,out/c19.cnf.MCSes
+../mcs/camus_mcs -ux5 in/c19.cnf,out/c19.cnf.MCSes
+../mus/camus_mus in/test1.cnf.MCSes,out/test1.cnf.MUSes
+../mus/camus_mus in/test2.cnf.MCSes,out/test2.cnf.MUSes
+../mus/camus_mus in/test3.cnf.MCSes,out/test3.cnf.MUSes
+../mus/camus_mus in/test4.cnf.MCSes,out/test4.cnf.MUSes
+../mus/camus_mus in/test5.cnf.MCSes,out/test5.cnf.MUSes
+../mus/camus_mus in/test6.cnf.MCSes,out/test6.cnf.MUSes
+../mus/camus_mus in/test7.cnf.MCSes,out/test7.cnf.MUSes
+../mus/camus_mus in/c14.cnf.MCSes,out/c14.cnf.MUSes
+../mus/camus_mus -b in/c14.cnf.MCSes,out/c14.cnf.MUSes_smallest

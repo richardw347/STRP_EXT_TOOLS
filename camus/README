@@ -1,0 +1,122 @@
+================
+| CAMUS README |
+================
+
+  CAMUS computes both minimal correction sets (MCSes -- "CoMSSes" in older
+  papers) and minimal unsatisfiable subsets (MUSes) of infeasible CNF
+  instances.  "camus_mcs" computes MCSes from the CNF instance, and "camus_mus"
+  will build MUSes from the MCSes.  CAMUS has several modes of operation, in
+  which it can, for example, compute a single Max-SAT solution, find a single
+  MUS, or compute partial results (often needed when the complete set is
+  intractable).  See the section on command line options for more information.
+
+
+QUESTIONS/PROBLEMS
+
+  If you have any questions or problems with the software, please email me at
+  <mliffito@iwu.edu>.
+
+
+BUILDING CAMUS
+
+  Simply run "make".
+
+RUNNING CAMUS
+
+  Both executables take input from a file specified on the command line, but
+  camus_mus will also read from STDIN, so the easiest way to run them to
+  produce all MUSes is:
+
+  ./mcs/camus_mcs FILE.cnf | ./mus/camus_mus > FILE.MUSes
+
+  Alternatively, you can store the MCSes for inspection by redirecting the
+  output of camus_mcs to a file, then running camus_mus separately if desired:
+
+  ./mcs/camus_mcs FILE.cnf > file.MCSes
+  ./mus/camus_mus FILE.MCSes > FILE.MUSes
+
+  The run_camus.sh script can be used for the basic flow of computing all MUSes,
+  but most applications will benefit from a more specific use of the tools and
+  their commandline options.
+
+OUTPUT
+
+  Both the MCSes and MUSes are output as a single set of clauses per line with
+  1-based indexing for the clauses.  E.g., the following output of camus_mus
+  indicates two MUSes, one containing clauses 1 and 5, and the other containing
+  clauses 1, 2, and 3:
+
+1 5
+1 2 3
+
+
+COMMAND LINE OPTIONS
+
+  The following options are common to both executables:
+
+    -v      : verbose (prints copious information about the process that is
+              extraneous to the results)
+
+    -s      : report stats (prints runtime to STDERR)
+
+    -t n    : set an n second timeout
+
+  camus_mcs options:
+
+	FILE.MCSes (Optional):  Specifying a second filename after the CNF file
+	will cause camus_mcs to take an initial set of MCSes from that file.  They
+	are specified exactly like the output of camus_mcs, so, for example, you
+	can use the output of an aborted previous run to avoid recomputing the
+	MCSes you already found.
+
+    -j      : just solve the SAT instance (and report result if verbose is on)
+
+    -m      : solve Max-SAT by returning first MCS found (incompatible with -x, -z)
+
+    -o      : find a single UNSAT core (usually not minimal) using the resolution DAG
+
+    -e      : find a single MUS (equivalent to '-z 1')
+
+    -x n    : set the bound/increment to n (requires -u for n>1, as this is
+	          incompatible with core extraction/guidance)
+
+    -z n    : truncate each MCS to n clauses
+
+    -g FILE : FILE contains groups of clauses (each line is a list of clause
+              numbers (1-based counting) in a group)
+
+    -p FILE : FILE contains partitions over clauses (each line contains the last
+              clause (1-based counting) in a partition)
+
+    -y FILE : FILE contains clauses defined over the y variables
+
+    -l n    : only report MCSes below size n
+
+	-u      : disable unsat core extraction/guidance (without cores, CAMUS is
+	          much slower, so this is not recommended)
+
+	The -x option can be useful to speed up the search on *some* benchmarks
+	(try "-x 2", "-x 10", "-x 100", and larger), but there is no way to know
+	beforehand which will be best (usually the default (1) is best).  The -z
+	option is useful for finding *some* MUSes.  Using "-z 1" will produce a
+	single MUS.  "-z 2" and above will truncate larger MCSes, and camus_mus
+	will then produce a subset of the complete set of MUSes.
+
+  camus_mus options:
+
+    -b : perform a branch-and-bound search to find the smallest hitting set (the
+         smallest MUS if camus_mus is run on MCSes)
+
+    -T : report a timestamp for every result (for producing anytime graphs)
+  
+
+ADDITIONAL RESOURCES
+
+  You may also be interested in work done by Cedric Piette and others on
+  boosting CAMUS with local search.  They were able to decrease the runtime by
+  finding candidate MCSes using local search before running my complete search.
+  Their work was published in IJCAI07, entitled "Boosting a Complete Technique
+  to Find MSS and MUS thanks to a Local Search Oracle."  I've been in contact
+  with Cedric, and you could probably contact him to ask about getting his
+  program: <piette@cril.univ-artois.fr>
+
