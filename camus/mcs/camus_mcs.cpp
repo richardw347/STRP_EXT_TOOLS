@@ -16,6 +16,7 @@
 #include <getopt.h>
 #include <iomanip>
 #include <signal.h>
+#include <unistd.h>
 #include <sys/resource.h>
 
 using std::cout;

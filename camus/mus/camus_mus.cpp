@@ -19,6 +19,7 @@
 #include <sys/resource.h>
 #include <list>
 #include <vector>
+#include <unistd.h>
 #include "MUSbuilder.h"
 
 using namespace::std;
